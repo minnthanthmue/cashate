@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Dynamically map theme colors to adapt automatically */
+  --color-slate-50: var(--bg-slate-50);
+  --color-slate-100: var(--border-slate-100);
+  --color-slate-200: var(--border-slate-200);
+  --color-slate-700: var(--text-main);
+  --color-slate-800: var(--text-main);
+  --color-slate-900: var(--text-heading);
+  --color-slate-500: var(--text-muted);
+}
+
+/* Base styling */
+:root {
+  --bg-grad-1: #C4D7FF;
+  --bg-grad-2: #E3D3FF;
+  --bg-grad-3: #D5FFF6;
+  
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-border: rgba(255, 255, 255, 0.55);
+  --card-shadow: 
+    0 4px 6px -1px rgba(99, 102, 241, 0.04), 
+    0 10px 20px -3px rgba(99, 102, 241, 0.08), 
+    0 20px 30px -5px rgba(139, 92, 246, 0.05),
+    0 4px 12px 0 rgba(168, 85, 247, 0.03);
+  --card-shadow-hover: 
+    0 12px 24px -3px rgba(99, 102, 241, 0.1), 
+    0 24px 40px -5px rgba(99, 102, 241, 0.15), 
+    0 35px 50px -10px rgba(139, 92, 246, 0.12),
+    0 8px 16px 0 rgba(168, 85, 247, 0.06);
+    
+  --btn-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --btn-gradient-hover: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+  --glow-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.4);
+  --glow-shadow-hover: 0 6px 20px 0 rgba(99, 102, 241, 0.5);
+  
+  --text-main: #334155; /* slate-700 */
+  --text-heading: #0f172a; /* slate-900 */
+  --text-muted: #64748b; /* slate-500 */
+  --bg-slate-50: rgba(248, 250, 252, 0.6);
+  --border-slate-100: rgba(241, 245, 249, 0.8);
+  --border-slate-200: rgba(226, 232, 240, 0.8);
+  
+  --glass-nav-bg: rgba(255, 255, 255, 0.65);
+  --glass-nav-border: rgba(255, 255, 255, 0.4);
+}
+
+.dark {
+  color-scheme: dark;
+  
+  --bg-grad-1: #0f1225; /* soft, premium deep navy-blue */
+  --bg-grad-2: #141320; /* elegant dark charcoal-purple / soft indigo */
+  --bg-grad-3: #11141c; /* calm slate-charcoal gray */
+  
+  --card-bg: rgba(22, 24, 38, 0.65); /* sleek premium glass card background using soft slate-indigo blend */
+  --card-border: rgba(255, 255, 255, 0.06); /* subtle low-opacity neutral border */
+  --card-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    0 12px 28px rgba(0, 0, 0, 0.45);
+    
+  --btn-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --btn-gradient-hover: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+  --glow-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+  --glow-shadow-hover: 0 6px 16px rgba(99, 102, 241, 0.25);
+  
+  --text-main: #cbd5e1; /* slate-300 off-white text for comfortable contrast */
+  --text-heading: #f8fafc; /* slate-50 high contrast off-white */
+  --text-muted: #64748b; /* slate-500 neutral text */
+  --bg-slate-50: rgba(22, 24, 38, 0.5);
+  --border-slate-100: rgba(255, 255, 255, 0.05);
+  --border-slate-200: rgba(255, 255, 255, 0.08);
+  
+  --glass-nav-bg: rgba(22, 24, 38, 0.8);
+  --glass-nav-border: rgba(255, 255, 255, 0.06);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: linear-gradient(135deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 50%, var(--bg-grad-3) 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  transition: background-color 0.3s ease;
+}
+
+body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Background gradient wrapper */
+.bg-app-gradient {
+  background: transparent; /* Now handled globally by body to prevent scroll clipping */
+}
+
+/* Premium Card with responsive adaptation */
+.premium-card {
+  background-color: var(--card-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 32px;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text-main);
+}
+
+.premium-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-3px);
+}
+
+/* Rich Accent Gradient for Buttons & Highlights */
+.bg-accent-gradient {
+  background: var(--btn-gradient);
+}
+
+.hover-bg-accent-gradient:hover {
+  background: var(--btn-gradient-hover);
+}
+
+/* Accent Glow Shadow for Buttons and Numbers */
+.accent-glow {
+  box-shadow: var(--glow-shadow);
+}
+
+.accent-glow:hover {
+  box-shadow: var(--glow-shadow-hover);
+}
+
+/* Text helpers for consistent dark mode contrast */
+.text-theme-body {
+  color: var(--text-main);
+}
+
+.text-theme-heading {
+  color: var(--text-heading);
+}
+
+.text-theme-muted {
+  color: var(--text-muted);
+}
+
+.bg-theme-slate-50 {
+  background-color: var(--bg-slate-50);
+}
+
+.border-theme-slate-100 {
+  border-color: var(--border-slate-100);
+}
+
+.glass-nav-custom {
+  background-color: var(--glass-nav-bg);
+  border-color: var(--glass-nav-border);
+}
